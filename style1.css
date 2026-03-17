@@ -1,0 +1,552 @@
+/*تنسيق النافبار*/
+.main-navbar {
+    background-color: #CCCCFF;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+.brand-logo {
+    font-weight: 800;
+    color: #0d6efd;
+    font-size: 1.5rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.search-container {
+    flex: 1;
+    max-width: 60%;
+    margin: 0 10px;
+}
+
+.search-input {
+    width: 100%;
+    background-color: #ffffff !important;
+    border: none !important;
+    border-radius: 50px !important;
+    padding: 8px 40px 8px 15px !important;
+    text-align: right;
+    font-size: 0.85rem;
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    left: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+}
+
+.action-icon {
+    color: #64748b;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.action-icon:hover {
+    color: #6366f1;
+}
+
+.chat-box {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 250px;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.chat-box button {
+    margin-top: 10px;
+    width: 100%;
+    border: none;
+    padding: 8px;
+    background: #1b264f;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+/* 1. تنسيق التوزيع الأساسي (Layout) */
+.main-layout {
+    display: flex; 
+    width: 100%;
+    direction: rtl;
+    background-color: #ffffff;
+}
+
+.sidebar-section {
+    width: 100%; 
+    flex-shrink: 0; 
+    position: sticky;
+    top: 0; 
+    height: 100vh; 
+    z-index: 1000;
+}
+
+.content-section {
+    flex-grow: 1; 
+    padding: 20px;
+}
+
+/* 2. تنسيق الفلتر من الداخل (Filter Design) */
+.filter-wrapper {
+    background-color: #CCCCFF;
+    height: 100%; 
+    padding: 20px;
+    border-left: 1px solid #ddd;
+    overflow-y: auto; 
+    box-shadow: -2px 0 5px rgba(0,0,0,0.05);
+}
+
+.filter-main-header {
+    background-color: #1572c2;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.filter-content-card, .demand-card {
+    background-color: #f1f5fb;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.input-group-custom {
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+.form-select-custom {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    text-align: right;
+}
+
+.section-title {
+    color: #0d47a1;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* 3. تنسيق أزرار التبديل (Switches) */
+.demand-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.custom-switch {
+    position: relative;
+    width: 40px;
+    height: 20px;
+}
+
+.custom-switch input { opacity: 0; width: 0; height: 0; }
+
+.custom-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.custom-slider:before {
+    position: absolute;
+    content: "";
+    height: 14px; width: 14px;
+    left: 3px; bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .custom-slider { background-color: #1572c2; }
+input:checked + .custom-slider:before { transform: translateX(20px); }
+
+/* 4. زر التطبيق */
+.apply-button {
+    width: 100%;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.apply-button:hover {
+    background-color: #6366f1;
+}
+
+
+/* تنسيق للمحتوى بجانب الفلتر */
+.placeholder-content {
+    background: white;
+    border: 2px dashed #eee;
+    padding: 100px 20px;
+    text-align: center;
+    border-radius: 15px;
+    min-height: 150px;
+}
+
+
+
+
+
+
+/* تنسيق قسم الهيرو */
+.hero-section {
+    background: linear-gradient(135deg, #f3f8ff 0%, #ffffff 100%);
+    padding: 60px 0 40px 0;
+    direction: rtl;
+
+}
+
+.hero-title {
+    color: #1a3a5f;
+    font-size: 2.1rem;
+    margin-bottom: 15px;
+}
+
+.hero-subtitle {
+    color: #64748b;
+}
+
+.hero-city-img {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    mix-blend-mode: multiply;
+    
+}
+
+/* الخط الفاصل بين العنوان والقوائم */
+.hero-separator {
+    height: 1px;
+    background-color: #e2e8f0;
+    width: 100%;
+}
+
+/* حاوية صناديق الاختيار (مرتبة أفقياً) */
+.hero-filters-row {
+    display: flex !important;
+    gap: 12px;
+}
+
+.hero-select-container {
+    background: white;
+    border: 1px solid #dce4ee;
+    border-radius: 12px;
+    min-width: 17px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.active-box {
+    border-color: #1572c2;
+    background-color: #f8fbff;
+}
+
+.hero-select-container:hover {
+    border-color: #1572c2;
+}
+ 
+ /*سهم الصناديق*/
+.hero-custom-select {
+    width: 100%;
+    padding: 10px 15px 10px 35px; 
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    color: #000000;
+    cursor: pointer;
+    outline: none;
+    text-align: right;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("https://cdn-icons-png.flaticon.com/512/32/32195.png");
+    background-repeat: no-repeat;
+    background-position: left 12px center;
+    background-size: 10px;
+}
+
+
+
+
+
+
+/* تنسيق الكارت */
+.custom-card-wrapper {
+    padding: 10px;
+    direction: rtl;
+    max-width: 100%;
+    width: 100%;
+  
+}
+
+.custom-property-card {
+    border-radius: 15px !important; 
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    background-color: #ffffff;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    background: #ffffff;
+    border-radius: 15px;   
+    border: 1px solid #ffffff;     
+    overflow: hidden;            
+    transition: 0.3s ease; 
+}
+
+/* ضبط حجم الصورة */
+.prop-image-box img {
+    height: 180px;
+    object-fit: cover;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+/* نصوص العنوان والموقع */
+.property-title {
+    color: #1b264f; 
+    font-size: 1.1rem;
+}
+
+.location-text {
+    color: #7d7d7d !important;
+    font-size: 0.8rem !important;
+}
+
+/* الخط الفاصل */
+.prop-divider {
+    height: 1px;
+    background-color: #f0f0f0;
+    width: 90%;
+    margin: 0 auto; 
+}
+
+/*منطقة السعر*/
+.price-demand-row{
+   display:flex;
+   justify-content:space-between;
+   align-items:center;
+   direction: rtl;
+}
+.price-box{
+    display:flex;
+    flex-direction:column;
+    text-align:right;
+}
+.price-label{
+     font-size:0.75rem;
+     color:#999;
+}
+
+
+
+ /* التنسيق الأساسي لشكل الكبسولة */
+.status-pill {
+    color: white !important;
+    padding: 4px 18px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: inline-block;
+    min-width: 95px;
+    text-align: center;
+}
+
+
+
+/*ألوان الكبسولة*/
+.status-very-high {
+    background-color: #06693d !important;
+}
+
+.status-high {
+    background-color: #00964b !important;
+}
+
+.status-medium {
+    background-color: #f7941d !important;
+}
+
+
+/* الجزء السفلي (المساحة والنوع) */
+.card-body .mt-auto {
+    background-color: transparent;
+}
+
+.footer-small-text{
+    font-size:0.75rem;
+    color:#999;
+}
+.custom-property-card .card-body {
+    text-align: right !important; 
+}
+
+/* الحاوية السفلية */
+.card-footer-custom {
+    border-top: 1px solid #f0f0f0; 
+    background-color: #fff;
+}
+
+/*الكارتfooter*/
+.footer-info{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:0.75rem;
+    color:#999;
+    margin-top:10px;
+}
+
+.custom-property-card {
+    direction: rtl;
+}
+
+
+
+
+
+
+/* تحسين الموقع للموبايل */
+
+@media (max-width: 768px) {
+
+.main-layout{
+flex-direction: column;
+}
+
+.sidebar-section{
+width: 100%;
+height: auto;
+position: relative;
+}
+
+.content-section{
+width: 100%;
+}
+
+.search-container{
+margin: 10px;
+}
+
+.custom-card-wrapper{
+width: 100%;
+}
+
+.hero-title{
+font-size: 1.4rem;
+text-align:center;
+}
+
+.hero-subtitle{
+text-align:center;
+}
+
+}
+
+
+
+
+
+.filter-btn{
+
+display:none;
+width:90%;
+margin:10px auto;
+background:#1572c2;
+color:white;
+border:none;
+padding:12px;
+border-radius:10px;
+font-size:16px;
+font-weight:bold;
+
+}
+
+@media (max-width:768px){
+
+.filter-btn{
+display:block;
+}
+
+.sidebar-section{
+
+position:fixed;
+right:-100%;
+top:0;
+width:260px;
+height:100vh;
+transition:0.3s;
+z-index:2000;
+
+}
+
+.show-filter{
+
+right:0;
+
+}
+
+}
+
+
+
+.overlay{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,0.4);
+
+z-index:1500;
+
+}
+
+
+
