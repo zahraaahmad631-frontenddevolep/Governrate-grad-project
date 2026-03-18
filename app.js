@@ -1,6 +1,6 @@
 
-const Navbar = () => {
-
+const Navbar = ({ searchTerm, setSearchTerm }) => {
+const [inputValue, setInputValue] = React.useState("");
 const [openChat, setOpenChat] = React.useState(false);
     return (
 <>
@@ -10,11 +10,18 @@ const [openChat, setOpenChat] = React.useState(false);
 
     <div className="search-container">
       <div className="position-relative">
-        <input 
-          type="text" 
-          className="form-control search-input" 
-          placeholder="ابحث..." 
-        />
+      <input 
+  type="text" 
+  className="form-control search-input" 
+  placeholder="ابحث..." 
+  value={inputValue}
+  onChange={(e) => setInputValue(e.target.value)}
+  onKeyDown={(e) => {
+    if (e.key === "Enter") {
+      setSearchTerm(inputValue);
+    }
+  }}
+/>
         <i className="bi bi-search search-icon"></i>
       </div>
     </div>
@@ -47,9 +54,9 @@ setMaxPrice,
 setSelectedDemand,
 setOpenFilter 
 }) => {
-    // قائمة الـ 27 محافظة بمصر
+    // قائمة الـ 5 محافظات بمصر
     const governorates = [
-        "القاهرة", "الجيزة", "الإسكندرية", "الدقهلية", "البحر الأحمر", "البحيرة", "الفيوم", "الغربية", "الإسماعيلية", "المنوفية", "المنيا", "القليوبية", "الوادي الجديد", "السويس", "الشرقية", "أسوان", "أسيوط", "بني سويف", "بورسعيد", "دمياط", "جنوب سيناء", "كفر الشيخ", "مطروح", "الأقصر", "قنا", "شمال سيناء", "سوهاج"
+        "القاهرة", "الجيزة","السويس","دمياط","البحر الأحمر","الوادي الجديد","بورسعيد","أسوان","الدقهلية","الأقصر","الإسكندرية",
     ];
 
     // أنواع العقارات الشائعة
@@ -150,7 +157,7 @@ setSelectedDemand("");
 
 const ContentHero = () => {
     const egyptGovernorates = [
-        "القاهرة", "الجيزة", "الإسكندرية", "الدقهلية", "البحر الأحمر", "البحيرة", "الفيوم", "الغربية", "الإسماعيلية", "المنوفية", "المنيا", "القليوبية", "الوادي الجديد", "السويس", "الشرقية", "أسوان", "أسيوط", "بني سويف", "بورسعيد", "دمياط", "جنوب سيناء", "كفر الشيخ", "مطروح", "الأقصر", "قنا", "شمال سيناء", "سوهاج"
+          "القاهرة", "الجيزة","السويس","دمياط","البحر الأحمر","الوادي الجديد","بورسعيد","أسوان","الدقهلية","الأقصر","الإسكندرية",
     ];
 
     return (
@@ -424,7 +431,7 @@ const propertiesData =[
           {
         id:16,
         title:"كومبوند فيينا",
-        city:"القاهرة",
+        city:"الجيزة",
         location:"الجيزة",
         price:"4,000,000",
         demand:"متوسط إلى مرتفع",
@@ -503,28 +510,61 @@ return (
 const App = () => {
 
 const [openFilter,setOpenFilter] = React.useState(false)
+const [searchTerm, setSearchTerm] = React.useState("");
+const resultsRef = React.useRef(null);
+const applyFilter = () => {
+  setOpenFilter(false);
+
+  setTimeout(() => {
+    if (resultsRef.current) {
+      resultsRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, 100);
+};
 const [selectedCity,setSelectedCity] = React.useState("");
 const [selectedType,setSelectedType] = React.useState("");
 const [maxPrice,setMaxPrice] = React.useState(50000000);
 const [selectedDemand,setSelectedDemand] = React.useState("");
 
+
 const filteredProperties = propertiesData.filter((item)=>{
 
-if(selectedCity && item.city !== selectedCity) return false;
+  if(selectedCity && item.city !== selectedCity) return false;
 
-if(selectedType && item.type !== selectedType) return false;
+  if(selectedType && item.type !== selectedType) return false;
 
-if(item.price > maxPrice) return false;
+  if(item.price > maxPrice) return false;
 
-if(selectedDemand && item.demand !== selectedDemand) return false;
-return true;
+  if(selectedDemand && item.demand !== selectedDemand) return false;''
+  React.useEffect(() => {
+ 
+  if (searchTerm && resultsRef.current) {
+    resultsRef.current.scrollIntoView({ behavior: "smooth" });
+  }
+}, [searchTerm]);
+
+  
+  if (searchTerm) {
+
+    const search = searchTerm.toLowerCase();
+
+    const nameMatch = item.title?.toLowerCase().includes(search);
+    const cityMatch = item.city?.toLowerCase().includes(search);
+    const typeMatch = item.type?.toLowerCase().includes(search);
+    const priceMatch = item.price?.toString().includes(search);
+
+  if (!nameMatch && !cityMatch && !typeMatch && !priceMatch) {
+  return false;
+}
+  } 
+
+  return true;
 
 });
-
 return (
 <div style={{ direction: 'rtl', backgroundColor: '#f8fafc' }}>
 
-<Navbar />
+<Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
 <button 
 className="filter-btn"
@@ -551,7 +591,7 @@ setSelectedDemand={setSelectedDemand}
 
 <ContentHero />
 
-<div className="properties-grid">
+<div className="properties-grid" ref={resultsRef}>
 {filteredProperties.length === 0 ? (
 <p style={{textAlign:"center", width:"100%"}}>لا توجد نتائج مطابقة</p>
 ) : (
