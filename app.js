@@ -52,7 +52,8 @@ setSelectedCity,
 setSelectedType, 
 setMaxPrice, 
 setSelectedDemand,
-setOpenFilter 
+setOpenFilter,
+onApply
 }) => {
     // قائمة الـ 5 محافظات بمصر
     const governorates = [
@@ -130,24 +131,14 @@ onChange={(e)=>setSelectedType(e.target.value)}
             </div>
 
             <button 
-className="apply-button mt-3"
-onClick={() => {
-setOpenFilter(false);
-window.scrollTo({ top: 0, behavior: "smooth" });
-}}
+  className="apply-btn"
+  onClick={() => {
+    setOpenFilter(false);
+    onApply();
+  }}
 >
-تطبيق التصفية
+تطبيق
 </button>
-            
- <button    className="apply-button mt-2"
-onClick={()=>{
-setSelectedCity("");
-setSelectedType("");
-setMaxPrice(50000000);
-setSelectedDemand("");
-}}
->
-إعادة ضبط  </button>
         </div>
     );
 };
@@ -157,7 +148,7 @@ setSelectedDemand("");
 
 const ContentHero = () => {
     const egyptGovernorates = [
-          "القاهرة", "الجيزة","السويس","دمياط","البحر الأحمر","الوادي الجديد","بورسعيد","أسوان","الدقهلية","الأقصر","الإسكندرية",
+          "القاهرة", "الجيزة","السويس","دمياط","بورسعيد","أسوان","الدقهلية","الأقصر","دمياط الجديدة","الإسكندرية"
     ];
 
     return (
@@ -452,6 +443,114 @@ const propertiesData =[
         type:"شقة/فيلا",
         image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT86RitLu258lTfy2wSoqedAPVC18E4MNX9Y-xBdBhq5I961zJS1M6L7uk&s=10",
         },
+        {
+        id:18,
+        title:"Palm Hills Alexandria",
+        city:"الأسكندرية",
+        location:"الكيلو 28 طريق إسكندرية الصحراوي",
+        price:"3,000,000",
+        demand:"مرتفع",
+        demandClass:"status-high",
+        area:"120-300",
+        type:"شقة/فيلا",
+        image:"https://www.palmhills.properties/wp-content/uploads/2023/12/%D8%A8%D8%A7%D9%84%D9%85-%D9%87%D9%8A%D9%84%D8%B2-%D8%A7%D9%84%D8%A7%D8%B3%D9%83%D9%86%D8%AF%D8%B1%D9%8A%D8%A9-3-460x444.jpg",
+        },
+         {
+        id:19,
+        title:"مشروع Janna (الإسكان الفاخر)",
+        city:"دمياط الجديدة",
+        location:"دمياط الجديدة",
+        price:"1,000,000",
+        demand:"متوسط",
+        demandClass:"status-medium",
+        area:"100-150",
+        type:"شقة",
+        image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaDGL9kk4ifqT4yMSIrtQqinCmujg5wcK7FtZXdpOhiNVu7j1UpiMv8FA&s=10",
+        },
+         {
+        id:20,
+        title:"دار مصر",
+        city:"دمياط الجديدة",
+        location:"دمياط الجديدة",
+        price:"900,000",
+        demand:"متوسط",
+        demandClass:"status-medium",
+        area:"100-130",
+        type:"شقة/وحدات سكنية",
+        image:"https://images.alborsaanews.com/2021/01/1543395858_547_75099_636542728776796006_2_15_13_0_37_419.jpg",
+        },
+         {
+        id:21,
+        title:"Palm Hills Sokhna",
+        city:"السويس",
+        location:"العين السخنه",
+        price:"2,000,000",
+        demand:"مرتفع",
+        demandClass:"status-high",
+        area:"70-150",
+        type:"شالية",
+        image:"https://selecthouse.co/wp-content/uploads/2020/05/%D8%A8%D8%A7%D9%84%D9%85-%D9%87%D9%8A%D9%84%D8%B2-%D8%A7%D9%84%D8%B3%D8%AE%D9%86%D8%A9-Palm-Hills-Sokhna-2.jpg",
+        },
+          {
+        id:22,
+        title:"Il Monte Galala",
+        city:"السويس",
+        location:"الجلاله",
+        price:"2,000,000",
+        demand:"مرتفع جداً",
+        demandClass:"status-very-high",
+        area:"80-300",
+        type:"شالية/فيلا",
+        image:"https://cf.bstatic.com/xdata/images/hotel/max1024x768/587192411.jpg?k=51900fc6303c47991c4150e0ea3ea8b3d795022a80be1fc67ea1c6dedefc1c15&o=",
+        },
+         {
+        id:23,
+        title:"كومباوند الإسكان المتميز",
+        city:"أسوان",
+        location:"حي العقاد الجديد",
+        price:"900,000",
+        demand:"متوسط",
+        demandClass:"status-medium",
+        area:"100-150",
+        type:"شقة",
+        image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-VXDBbp617TNs08C4FFaynvko5igp62dcATi7AtZTTeGPqYj2AVsYrkM&s=10",
+        },
+          {
+        id:24,
+        title:"مشروع الإسكان الإجتماعى ",
+        city:"أسوان",
+        location:"أسوان الجديدة-الحي الأول",
+        price:"500,000",
+        demand:"متوسط",
+        demandClass:"status-medium",
+        area:"75-90",
+        type:"شقة",
+        image:"https://media.almalnews.com/2017/6/large/4d28977c-0190-4998-899f-138b6dc29efc.jpg",
+        },
+          {
+        id:25,
+        title:"The Pearl New Mansoura",
+        city:"الدقهلية",
+        location:"المنصورة الجديدة",
+        price:"2,000,000",
+        demand:"مرتفع",
+        demandClass:"status-high",
+        area:"52-280",
+        type:"فيلا/بنتهاوس",
+        image:"https://ipgegypt.com/storage/attachments/new/63984c7b3a790_1-The-Pearl-New-Mansoura-Safwa-Urban-Development-%D9%83%D9%85%D8%A8%D9%88%D9%86%D8%AF-%D8%B0%D8%A7-%D8%A8%D9%8A%D8%B1%D9%84-%D8%A7%D9%84%D9%85%D9%86%D8%B5%D9%88%D8%B1%D8%A9-%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9-%D8%B4%D9%82%D9%82-%D9%81%D9%8A%D9%84%D8%A7%D8%AA",
+        },
+         {
+        id:26,
+        title:"Jaz Residences Luxor(Iberotel Luxor)",
+        city:"الأقصر",
+        location:"مناطق سياحية بالأقصر",
+        price:"5,000,000",
+        demand:"مرتفع",
+        demandClass:"status-high",
+        area:"70-150",
+        type:"وحدات سياحية/فنادق",
+        image:"https://images.jazhotels.com/ljTNepTZK2eNkXQPv9DkJJ3VKtw=/380x342/storage.googleapis.com%2Fjaz-prod%2Fstrapi%2F16268_Iberotel_Luxor_Iberotel_Luxor_45_Edit_3dee82d49d%2F16268_Iberotel_Luxor_Iberotel_Luxor_45_Edit_3dee82d49d.jpg",
+        },
 ];
 
 // 2. مكوّن الكارت 
@@ -512,19 +611,24 @@ const App = () => {
 const [openFilter,setOpenFilter] = React.useState(false)
 const [searchTerm, setSearchTerm] = React.useState("");
 const resultsRef = React.useRef(null);
-const applyFilter = () => {
-  setOpenFilter(false);
 
+const applyFilter = () => {
   setTimeout(() => {
     if (resultsRef.current) {
       resultsRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, 100);
 };
+
 const [selectedCity,setSelectedCity] = React.useState("");
 const [selectedType,setSelectedType] = React.useState("");
 const [maxPrice,setMaxPrice] = React.useState(50000000);
 const [selectedDemand,setSelectedDemand] = React.useState("");
+React.useEffect(() => {
+  if (searchTerm && resultsRef.current) {
+    resultsRef.current.scrollIntoView({ behavior: "smooth" });
+  }
+}, [searchTerm]);
 
 
 const filteredProperties = propertiesData.filter((item)=>{
@@ -533,19 +637,11 @@ const filteredProperties = propertiesData.filter((item)=>{
 
   if(selectedType && item.type !== selectedType) return false;
 
-  if(item.price > maxPrice) return false;
+  if(Number(item.price.replace(/,/g, "")) > maxPrice) return false;
 
-  if(selectedDemand && item.demand !== selectedDemand) return false;''
-  React.useEffect(() => {
- 
-  if (searchTerm && resultsRef.current) {
-    resultsRef.current.scrollIntoView({ behavior: "smooth" });
-  }
-}, [searchTerm]);
+  if(selectedDemand && item.demand !== selectedDemand) return false;
 
-  
   if (searchTerm) {
-
     const search = searchTerm.toLowerCase();
 
     const nameMatch = item.title?.toLowerCase().includes(search);
@@ -553,13 +649,12 @@ const filteredProperties = propertiesData.filter((item)=>{
     const typeMatch = item.type?.toLowerCase().includes(search);
     const priceMatch = item.price?.toString().includes(search);
 
-  if (!nameMatch && !cityMatch && !typeMatch && !priceMatch) {
-  return false;
-}
+    if (!nameMatch && !cityMatch && !typeMatch && !priceMatch) {
+      return false;
+    }
   } 
 
   return true;
-
 });
 return (
 <div style={{ direction: 'rtl', backgroundColor: '#f8fafc' }}>
@@ -580,10 +675,12 @@ onClick={()=>setOpenFilter(!openFilter)}
 
 <aside className={`sidebar-section ${openFilter ? "show-filter" : ""}`}>
 <FilterSidebar 
-setSelectedCity={setSelectedCity}
-setSelectedType={setSelectedType}
-setMaxPrice={setMaxPrice}
-setSelectedDemand={setSelectedDemand}
+  setSelectedCity={setSelectedCity}
+  setSelectedType={setSelectedType}
+  setMaxPrice={setMaxPrice}
+  setSelectedDemand={setSelectedDemand}
+  setOpenFilter={setOpenFilter}
+  onApply={applyFilter}
 />
 </aside>
 

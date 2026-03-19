@@ -199,7 +199,7 @@ input:checked + .custom-slider { background-color: #1572c2; }
 input:checked + .custom-slider:before { transform: translateX(20px); }
 
 /* 4. زر التطبيق */
-.apply-button {
+.apply-btn{
     width: 100%;
     background-color: #27ae60;
     color: white;
